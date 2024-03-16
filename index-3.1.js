@@ -28,12 +28,6 @@ app.get('/api/persons', (request, response) => { 
   response.json(persons)
 })
 
-app.get('/api/info', (request, response) => {
-  //response.???date
-  // pitää laskea jokainen note jollain metodilla ja tulostaa se
-  //res.send --> html
-})
-
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
