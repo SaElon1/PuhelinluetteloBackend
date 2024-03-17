@@ -64,18 +64,6 @@ app.post('/api/persons', (request, response) => {
   const person = request.body
   person.id = idGenerator()
 
-  if (!person.name || !person.number) {
-    return response.status(400).json({
-      error: 'name or number missing'
-    })
-  }
-
-  if (persons.find(existingPerson => existingPerson.name === person.name)) {
-    return response.status(400).json({
-      error: 'name must be unique'
-    })
-    }
-
   persons = persons.concat(person)
   response.json(person)
 })
