@@ -61,15 +61,11 @@ app.post('/api/persons', (request, response) => {
     name: body.name,
     number: body.number,
   })
-  person.save().then(savedPeson => {
-    response.json(savedPeson)
+  person.save().then(savedPerson => {
+    response.json(savedPerson)
   })
 })
 
-const idGenerator = () => {
-  const maxId = 10000
-  return (Math.floor(Math.random() * maxId))
-}
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
