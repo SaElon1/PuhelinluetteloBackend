@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.static('dist'))
 
 let persons = [
-  ]
+]
 
 app.use(morgan('tiny'))
 
@@ -25,35 +25,35 @@ app.get('/api/info', (request, response) => {
   const requestTime = new Date().toString()
   Person.countDocuments({}).then(count => {
     const infoMessage = `Phonebook has info for ${count} people`
-      response.send(`
+    response.send(`
         <div>
         <p>${infoMessage}</p>
         <p>${requestTime}</p>
         </div>`)
   })
-  .catch(error => {
-    response.status(500).send('Server error')
-  })
-  })
+    .catch(error => {
+      response.status(500).send('Server error')
+    })
+})
 
 
 app.get('/api/persons/:id', (request, response, next) => {
   Person.findById(request.params.id).then(person => {
-  if (person) {
-    response.json(person)
-  } else {
-    response.status(404).end()
-  }
+    if (person) {
+      response.json(person)
+    } else {
+      response.status(404).end()
+    }
   })
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 app.delete('/api/persons/:id',(request,response, next) => {
   Person.findByIdAndDelete(request.params.id)
-  .then(result => {
-    response.status(204).end()
-  })
-  .catch(error => next(error))
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
 })
 
 app.post('/api/persons', (request, response, next) => {
@@ -69,7 +69,7 @@ app.post('/api/persons', (request, response, next) => {
   person.save().then(savedPerson => {
     response.json(savedPerson)
   })
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 const errorHandler = (error, request, response, next) => {

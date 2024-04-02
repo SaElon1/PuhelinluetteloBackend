@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.static('dist'))
 
 let persons = [
-  ]
+]
 
 app.use(morgan('tiny'))
 
@@ -47,9 +47,9 @@ app.get('/api/persons/:id', (request, response) => {
 
 app.delete('/api/persons/:id',(request,response) => {
   Person.findByIdAndDelete(request.params.id)
-  .then(result => {
-    response.status(204).end()
-  })
+    .then(result => {
+      response.status(204).end()
+    })
 })
 
 app.post('/api/persons', (request, response) => {
